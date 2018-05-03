@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+
+{% block mainbody %}
+    <div class="shards-landing-page--1">
+      <!-- Welcome Section -->
+      <div class="welcome d-flex justify-content-center flex-column">
+        <div class="container">
+          <!-- Navigation -->
+          <nav class="navbar navbar-expand-lg navbar-dark pt-4 px-0">
+            <a class="navbar-brand" href="http://www.nuoxiao.com/">
+              <img src="/statics/images/agency-landing/shards-logo-white.svg" class="mr-2" alt="Shards - Agency Landing Page"> 诺晓 nuoxiao
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <!--<li class="nav-item active">-->
+                  <!--<a class="nav-link" href="http://www.nuoxiao.com/">NuoXiao <span class="sr-only">(current)</span></a>-->
+                <!--</li>-->
+                <li class="nav-item active">
+                    <a class="nav-link" href="../../">服务</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/blog/garden/">庄园</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/blog/theme/">主题</a>
+                </li>
+              </ul>
+
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://dribbble.com/"><i class="fa fa-dribbble"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://github.com/"><i class="fa fa-github"></i></a>
+                </li>
+              </ul>
+
+            </div>
+          </nav>
+          <!-- / Navigation -->
+        </div>
+
+        <!-- Inner Wrapper -->
+        <div class="inner-wrapper  ">
+          <div class="row">
+            <div class="col-md-7">
+                <h1 class="welcome-heading display-4 text-white">{{ hello.welcome }}</h1>
+                <p class="text-white">{{ hello.subtitle }}</p>
+                <!--<a href="#our-services" class="btn btn-lg btn-outline-white btn-pill align-self-center">Learn More</a>-->
+            </div>
+          </div>
+        </div>
+        <!-- / Inner Wrapper -->
+      </div>
+      <!-- / Welcome Section -->
+
+      <!-- Our Services Section -->
+      <div id="our-services" class="our-services section py-4">
+        <h3 class="section-title text-center my-5">主题 @Theme</h3>
+        <!-- Features -->
+        <div class="features py-4 mb-4">
+          <div class="container">
+            <div class="row">
+                {% for theme in themes %}
+                    <div class="feature py-4 col-md-6 d-flex">
+                        <div class="icon text-primary mr-3"><i class="{{ theme.icon }}"></i></div>
+                        <div class="px-4">
+                            <h5>{{ theme.themeName }}</h5>
+                            <p>{{ theme.introduce }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+          </div>
+        </div>
+        <!-- / Features -->
+      </div>
+      <!-- / Our Services Section -->
+
+      <!-- Our Blog Section -->
+      <div class="blog section section-invert py-4">
+          <h3 class="section-title text-center m-5">主题院</h3>
+
+        <div class="container">
+          <div class="py-4">
+            <div class="row">
+              <div class="card-deck">
+                  {% for item in themeBlogs %}
+                      <div class="col-md-12 col-lg-4">
+                          <div class="card mb-4">
+                              <img class="card-img-top" src="{{ item.imgurl }}"
+                                   onerror='this.src="/statics/images/demo/stock-photos/1.jpg";' alt="Card image cap">
+                              <div class="card-body">
+                                  <h4 class="card-title">{{ item.title }}</h4>
+                                  <p class="card-text">{{ item.introduction }}.</p>
+                                  <a class="btn btn-primary btn-pill" href="/">阅读{{ item.reads }}-{{ item.links }} </a>
+                              </div>
+                          </div>
+                      </div>
+
+                  {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- / Our Blog Section -->
+
+      <!-- Testimonials Section -->
+      <div class="testimonials section py-4">
+          <h3 class="section-title text-center m-5">主题创作者</h3>
+          <div class="container py-5">
+            <div class="row">
+                {% for user in users %}
+                    <div class="col-md-4 testimonial text-center">
+                        <div class="avatar rounded-circle with-shadows mb-3 ml-auto mr-auto">
+                            <img src="{{ user.icon }}" onerror='this.src="/statics/images/demo/stock-photos/1.jpg";'
+                                 class="w-100" alt="Testimonial Avatar"/>
+                        </div>
+                        <h5 class="mb-1">{{ user.nickname }}</h5>
+                        <span class="text-muted d-block mb-2">{{ user.subject }}</span>
+                        <p>{{ user.introduce }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+          </div>
+      </div>
+      <!-- / Testimonials Section -->
+
+      <!-- Contact Section -->
+      <div class="contact section-invert py-4">
+        <h3 class="section-title text-center m-5">联系我们</h3>
+        <div class="container py-4">
+          <div class="row justify-content-md-center px-4">
+            <div class="contact-form col-sm-12 col-md-10 col-lg-7 p-4 mb-4 card">
+              <form>
+                <div class="row">
+                  <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label for="contactFormFullName">姓名</label>
+                      <input type="email" class="form-control" id="contactFormFullName" placeholder="Enter your full name">
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                      <label for="contactFormEmail">邮箱</label>
+                      <input type="email" class="form-control" id="contactFormEmail" placeholder="Enter your email address">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                        <label for="exampleInputMessage1">有话要说</label>
+                        <textarea id="exampleInputMessage1" class="form-control mb-4" rows="10" placeholder="Enter your message..." name="message"></textarea>
+                    </div>
+                  </div>
+                </div>
+                <input class="btn btn-primary btn-pill d-flex ml-auto mr-auto" type="submit" value="发送消息">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- / Contact Section -->
+    </div>
+{% endblock %}

@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block mainbody %}
+    <!-- Floating Shards -->
+  <img src="/statics/images/demo/shard-1-5x-3.png" alt="Shard" class="shard">
+
+  <!-- Welcome Section -->
+  <div class="welcome d-flex justify-content-center flex-column">
+    <div class="inner-wrapper mt-auto mb-auto">
+      <h1 class="slide-in text-primary"> {{ primary }} </h1>
+      <p class="row"></p>
+      <p class="slide-in">{{ slide }}</p>
+      <!--<div class="action-links slide-in">-->
+        <!--<a href="http://www.nuoxiao.com/blogs/" class="btn btn-outline-primary">文章</a>-->
+        <!--<a href="#" data-scroll-to="#introduction" id="scroll-to-content" class="btn btn-outline-light  ">阅读</a>-->
+      <!--</div>-->
+    </div>
+    <div class="product-by">
+      <a href="https://www.nuoxiao.com" target="_blank"> <p>{{ product }}</p></a>
+    </div>
+  </div>
+
+  <!-- Page Content -->
+  <div class="page-content">
+    <!-- Content -->
+    <div class="content clearfix">
+      <!-- Colors -->
+      <div id="colors" class="container mb-5">
+        <div class="example col-md-10 ml-auto mr-auto">
+          <div class="row">
+            <div class="color-wrapper col-lg-3 col-md-6 col-sm-6">
+              <div class="color">
+                <div class="swatch" style="background: #0067f4"></div>
+                <span class="title">Primary</span>
+                <span class="hex-value">#0067f4</span>
+              </div>
+            </div>
+
+            <div class="color-wrapper col-lg-3 col-md-6 col-sm-6">
+              <div class="color">
+                <div class="swatch" style="background: #5A6169"></div>
+                <span class="title">Secondary</span>
+                <span class="hex-value">#5A6169</span>
+              </div>
+            </div>
+
+            <div class="color-wrapper col-lg-3 col-md-6 col-sm-6">
+              <div class="color">
+                <div class="swatch" style="background: #17c671"></div>
+                <span class="title">Success</span>
+                <span class="hex-value">#17c671</span>
+              </div>
+            </div>
+
+            <div class="color-wrapper col-lg-3 col-md-6 col-sm-6">
+              <div class="color">
+                <div class="swatch" style="background: #00b8d8"></div>
+                <span class="title">Info</span>
+                <span class="hex-value">#00b8d8</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="color-wrapper col-lg-3 col-md-6 col-sm-6">
+              <div class="color">
+                <div class="swatch" style="background: #ffb400"></div>
+                <span class="title">Warning</span>
+                <span class="hex-value">#ffb400</span>
+              </div>
+            </div>
+
+            <div class="color-wrapper col-lg-3 col-md-6 col-sm-6">
+              <div class="color">
+                <div class="swatch" style="background: #c4183c"></div>
+                <span class="title">Danger</span>
+                <span class="hex-value">#c4183c</span>
+              </div>
+            </div>
+
+            <div class="color-wrapper col-lg-3 col-md-6 col-sm-6">
+              <div class="color">
+                <div class="swatch" style="background: #e9ecef"></div>
+                <span class="title">Light</span>
+                <span class="hex-value">#e9ecef</span>
+              </div>
+            </div>
+
+            <div class="color-wrapper col-lg-3 col-md-6 col-sm-6">
+              <div class="color">
+                <div class="swatch" style="background: #212529"></div>
+                <span class="title">Dark</span>
+                <span class="hex-value">#212529</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Documentation -->
+    <div id="documentation" class="bg-white">
+      <div class="section-title container ml-auto mr-auto py-5">
+        <div class="col-lg-8 col-md-10 ml-auto mr-auto py-5">
+          <h1 class="mb-2 text-center">📘</h1>
+            <h3 class="mb-4 text-center">诺晓 & NuoXiao By 设计规范</h3>
+            <p class="text-center">确保用户可以使用的基础上，简单易用，明确方向，传递情感温暖为导向，带给用户轻松愉悦的交互体验，释放设计本身。 <strong>With Power！</strong>
+            </p>
+            <button type="button" class="btn btn-primary btn-pill btn-lg d-table ml-auto mr-auto" data-toggle="modal"
+                    data-target="#exampleModal">
+                ✋ Click Me!
+            </button>
+            <!-- Modal Body -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">感谢关注 </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            触发此操作可能会在稍后影响您. <strong>你还想继续吗？</strong>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-info" data-dismiss="modal">yes！</button>
+                            <button type="button" class="btn btn-light" data-dismiss="modal">是的</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- End Page Content -->
+
+{% endblock %}

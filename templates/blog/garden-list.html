@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block mainbody %}
+
+  <div class="page-content">
+    <div id="navbars" class="my-5">
+        <div class="section-title container ml-auto mr-auto">
+            <div class="col-lg-12 col-md-12 ml-auto mr-auto mb-5">
+                <h3 class="mb-4">{{ garden.name }}</h3>
+                <p>{{ garden.introduce }}</p>
+                <p>
+                    {% autoescape off %}
+                        {{ garden.description }}
+                    {% endautoescape %}
+                </p>
+            </div>
+        </div>
+        <div class="example">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+                <a class="navbar-brand" href="../"> </a>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown-7">
+                    <ul class="navbar-nav mr-auto">
+                          {% for graden in list %}
+                            <li class="nav-item {% if graden.id == currentId %} active{% else %} {% endif %}">
+                                <a class="nav-link" href="../list-{{ graden.id }}/">{{ graden.name }} <span class="sr-only">(current)</span></a>
+                            </li>
+                         {% endfor %}
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div id="cards" class="container mb-2" style="padding-bottom: 1px">
+      <div  class="container mb-2" style="padding-bottom: 10px">
+        <div class="example col-md-12 ml-auto mr-auto">
+          {% for blog in blogs %}
+              <p>{{ blog.title }}</p>
+              <div class="row">
+                  <div class="card text-white">
+                      <img class="card-img" src="{{ blog.imgurl }}" alt="Card image">
+                      <div class="card-img-overlay">
+                          <h4 class="card-title">{{ blog.dateTime|date:'Y-m-d H:i:s' }}</h4>
+                          <p class="card-text"> {{ blog.introduction }} </p>
+                          <p class="card-text">
+                              <a href="{% url 'detail' blog.id %}"
+                                 class="btn btn-primary">阅读 {{ blog.reads }}-{{ blog.links }}</a>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

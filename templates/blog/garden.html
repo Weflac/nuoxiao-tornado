@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block mainbody %}
+
+  <div class="page container">
+    <div class="row">
+      <div class="page-content col-md-12 ml-auto mr-auto">
+        <div class="shards-demo supra">
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+               <li data-target="#carouselExampleIndicators" data-slide-to="0" class=""></li>
+               <li data-target="#carouselExampleIndicators" data-slide-to="1" class="active"></li>
+               <li data-target="#carouselExampleIndicators" data-slide-to="2" class=""></li>
+            </ol>
+            <div class="carousel-inner">
+                {% for garden in list %}
+                    <div class="carousel-item {% if forloop.first%} active {% endif %}  ">
+                          <a href="list-{{ garden.id }}/"  >
+                          <img class="d-block w-100" src="/statics/images/demo/stock-photos/{% if forloop.first%}1{% elif forloop.last  %}3{% else %}2{% endif %}.jpg" alt="{{ forloop.first }}">
+                          <div class="carousel-caption d-none d-md-block">
+                            <h5 class="text-white">{{ garden.name }}-{{ garden.id }}</h5>
+                            <p>{{ garden.introduce }}</p>
+                          </div>
+                          </a>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!--<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">-->
+              <!--<span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+              <!--<span class="sr-only">Previous</span>-->
+            <!--</a>-->
+            <!--<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">-->
+              <!--<span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+              <!--<span class="sr-only">Next</span>-->
+            <!--</a>-->
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="page-content">
+    <div class="content clearfix">
+      <div id="cards" class="container mb-2" style="padding-bottom: 1px">
+        <div class="example col-md-12 ml-auto mr-auto">
+          <div class="row">
+
+              {% for blog in blogs %}
+                  <div class="col-lg-4 col-md-6 col-sm-12 mb-4 sm-hidden">
+                  <div class="card">
+                    <img class="card-img-top" src="{{ blog.imgurl }}" alt="Card image cap">
+                    <div class="card-body">
+                      <h4 class="card-title">{{ blog.title }}</h4>
+                      <p class="card-text">{{ blog.introduction|truncatechars:200 }}.</p>
+                        <a href="{% url 'detail' blog.id %}"
+                           class="btn btn-primary">阅读 {{ blog.reads }}-{{ blog.links }}</a>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+{% endblock %}

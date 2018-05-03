@@ -1,0 +1,154 @@
+
+{% extends "share/blogs-base.html" %}
+
+{% block blogsmainbody %}
+
+  <div class="page-header header-filter clear-filter" data-parallax="true" style="background-image: url('{{ blog.imgurl }}'); transform: translate3d(0px, 0px, 0px);">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 ml-auto mr-auto">
+          <div class="brand">
+            <h1>{{ blog.title }}   </span> </h1>
+            <h3 class="title">{{ blog.subtitle }} </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main main-raised">
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto">
+            <h4 class="description text-center">{{ blog.introduction }}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-components">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12">
+              {% autoescape off %}
+                 {{ blog.description }}
+              {% endautoescape %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section section-comments">
+      <div class="row">
+        <div class="col-md-8 ml-auto mr-auto">
+          <div class="media-area">
+            <h3 class="title text-center">{{  counts  }} 条评论  </h3>
+
+              {% for comment in comments  %}
+                <div class="media">
+                  <a class="float-left" href="#pablo">
+                    <div class="avatar">
+                      <img class="media-object" src="/statics/assets/img/faces/card-profile4-square.jpg" alt="...">
+                    </div>
+                  </a>
+                  <div class="media-body">
+                    <h4 class="media-heading">Tina Andrew <small>· {{ comment.dateTime | date:'Y-m-d H:i:s' }}</small></h4>
+                    <h6 class="text-muted"></h6>
+                    <p>
+                        {% autoescape off %}
+                         {{ comment.contnet }}
+                        {% endautoescape %}
+                    </p>
+                    <div class="media-footer">
+                      <a href="#pablo" class="btn btn-primary btn-link float-right" rel="tooltip" title="" data-original-title="Reply to Comment">
+                        <i class="material-icons">回复数：</i> {{ comment.reply }}
+                      </a>
+                      <a href="#pablo" class="btn btn-danger btn-link float-right">
+                        <i class="material-icons">引用数：</i> {{ comment.references }}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+
+{#            <div class="media">#}
+{#              <a class="float-left" href="#pablo">#}
+{#                <div class="avatar">#}
+{#                  <img class="media-object" alt="Tim Picture" src="/statics/assets/img/faces/card-profile1-square.jpg">#}
+{#                </div>#}
+{#              </a>#}
+{#              <div class="media-body">#}
+{#                <h4 class="media-heading">John Camber <small>· Yesterday</small></h4>#}
+{#                <p>Hello guys, nice to have you on the platform! There will be a lot of great stuff coming soon. We will keep you posted for the latest news.</p>#}
+{#                <p> Don't forget, You're Awesome!</p>#}
+{#                <div class="media-footer">#}
+{#                  <a href="#pablo" class="btn btn-primary btn-link float-right" rel="tooltip" title="" data-original-title="Reply to Comment">#}
+{#                    <i class="material-icons">reply</i> Reply#}
+{#                  </a>#}
+{#                  <a href="#pablo" class="btn btn-link float-right">#}
+{#                    <i class="material-icons">favorite</i> 25#}
+{#                  </a>#}
+{#                </div>#}
+{#                  #}
+{#                <div class="media">#}
+{#                  <a class="float-left" href="#pablo">#}
+{#                    <div class="avatar">#}
+{#                      <img class="media-object" alt="64x64" src="/statics/assets/img/faces/card-profile4-square.jpg">#}
+{#                    </div>#}
+{#                  </a>#}
+{#                  <div class="media-body">#}
+{#                    <h4 class="media-heading">Tina Andrew <small>· 12 Hours Ago</small></h4>#}
+{##}
+{#                    <p>Hello guys, nice to have you on the platform! There will be a lot of great stuff coming soon. We will keep you posted for the latest news.</p>#}
+{#                    <p> Don't forget, You're Awesome!</p>#}
+{##}
+{#                    <div class="media-footer">#}
+{#                      <a href="#pablo" class="btn btn-primary btn-link float-right" rel="tooltip" title="" data-original-title="Reply to Comment">#}
+{#                        <i class="material-icons">reply</i> Reply#}
+{#                      </a>#}
+{#                      <a href="#pablo" class="btn btn-link btn-secondary float-right">#}
+{#                        <i class="material-icons">favorite</i> 2#}
+{#                      </a>#}
+{#                    </div>#}
+{#                  </div>#}
+{#                </div>#}
+{#              </div>#}
+{#            </div>#}
+
+          </div>
+
+          <h3 class="title text-center">发表评论</h3>
+          <div class="media media-post">
+              <form method="post" action="">
+                  {% csrf_token %}
+                  <div class="media-body">
+                      <div class="row">
+                          <div class="col-md-12">
+                              <div class="form-group">
+                                  <input type="text" class="form-control" name="title" id="title"
+                                         placeholder="Enter your title">
+                              </div>
+                          </div>
+                    </div>
+                      <div class="row">
+                          <div class="col">
+                              <div class="form-group">
+                                  <textarea id="message" class="form-control mb-4" rows="10"
+                                            placeholder="Enter your message..." name="message"></textarea>
+                              </div>
+                          </div>
+                    </div>
+                      <div class="media-footer">
+                          <button type="submit" class="btn btn-primary float-right">发送</button>
+                      </div>
+                  </div>
+
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
