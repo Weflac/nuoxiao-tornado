@@ -4,8 +4,8 @@ import os
 
 # Application配置参数
 settings = dict(
-    static_path=os.path.join(os.path.dirname(__file__),"statics"),
-    template_path=os.path.join(os.path.dirname(__file__),"templates"),
+    static_path=os.path.join(os.path.dirname(__file__), "statics"),
+    template_path=os.path.join(os.path.dirname(__file__), "templates"),
     cookie_sercet="FhLXI+BRRomtuaG47hoXEg3JCdi0BUi8vrpWmoxaoyI===",
     xsrf_cookies=True,
     # login_url="/login",

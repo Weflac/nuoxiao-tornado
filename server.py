@@ -15,8 +15,8 @@ from tornado.options import options, define
 define("port", default=8900, type=int, help="run server on the given port")
 
 class Application(tornado.web.Application):
-    def __init__(self,*args,**kwargs):
-        super(Application, self).__init__(*args,**kwargs)
+    def __init__(self, *args, **kwargs):
+        super(Application, self).__init__(*args, **kwargs)
         self.db = torndb.Connection(**config.mysql_options)
         self.redis = redis.StrictRedis(**config.redis_options)
 
